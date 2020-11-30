@@ -1,16 +1,16 @@
-import React, { createContext, useEffect, useState } from 'react';
-import withFirebaseAuth from 'react-with-firebase-auth';
-import * as firebase from 'firebase';
-import 'firebase/auth';
+import React, { createContext, useEffect, useState } from "react";
+import withFirebaseAuth from "react-with-firebase-auth";
+import * as firebase from "firebase";
+import "firebase/auth";
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyD9-E5zrdd31sYCUFImJlYKcFekOYSfzRk',
-  authDomain: 'user-app-79e3c.firebaseapp.com',
-  databaseURL: 'https://user-app-79e3c.firebaseio.com',
-  projectId: 'user-app-79e3c',
-  storageBucket: 'user-app-79e3c.appspot.com',
-  messagingSenderId: '849093390522',
-  appId: '1:849093390522:web:55ab1d7d6e2da7b0961283',
+var firebaseConfig = {
+  apiKey: "AIzaSyBhvySD0EQOJmHfVADvTucFQZz58_uaHBE",
+  authDomain: "user-app-2ee5f.firebaseapp.com",
+  databaseURL: "https://user-app-2ee5f.firebaseio.com",
+  projectId: "user-app-2ee5f",
+  storageBucket: "user-app-2ee5f.appspot.com",
+  messagingSenderId: "729870811919",
+  appId: "1:729870811919:web:a640bfbb0f89b08f6ab47a",
 };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
@@ -24,19 +24,19 @@ export const AppContext = createContext(null);
 
 const AppProvider = ({ children, signInWithGoogle, signOut, user }) => {
   const [appUser, setAppUser] = useState({});
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const handleSignOut = () => {
     signOut();
     setAppUser({});
-    setMessage('');
+    setMessage("");
   };
 
   useEffect(() => {
     if (user) {
       fetch(`/users`, {
-        method: 'post',
+        method: "post",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           displayName: user.displayName,
